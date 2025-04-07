@@ -10,6 +10,7 @@ class ProductsController extends Controller
     public function index() 
     {
         $produtos = Products::all();
+        
         return view('index', ['produtos' => $produtos]);
     }
 
@@ -43,7 +44,7 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $produto = Products::findOrFail($id);
+        $produto = Products::find($id);
 
         $produto->update([
             'name' => $request->name,

@@ -1,0 +1,16 @@
+input{
+    height: 30px;
+}
+
+table{
+    width: 99%;
+}
+
+thead {
+
+    align-items: center;
+}
+
+tbody tr{
+    text-align: center;
+}

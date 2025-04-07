@@ -4,29 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/produtos.css">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    @stack('jquery')
+    @stack('css')
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <title>Produtos</title>
 </head>
 
 
-<body style="max-width: 100%; max-height: 100%;  background-color: gray;">
-    <div>
+<body>
+    <div class="navbar">
+        @yield('navbar')
+    </div>
+        <div class="centro">
 
-        <div>
-
-            <div>
-              @yield('navbar')
-            </div>
-
-            <div>
-                @csrf
-               @yield('content')
-            </div>
-            <div>
-                <footer>Primeiro Projeto Laravel</footer>
-            </div>
+    
+        <!-- <hr style="margin: -2px;"> -->
+        <div style="margin: 20px;">
+            @csrf
+            @yield('content')
         </div>
     </div>
+    <footer>Primeiro Projeto Laravel</footer>
 </body>
+
+@stack('script')
 
 </html>

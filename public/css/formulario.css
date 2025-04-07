@@ -1,0 +1,21 @@
+div {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin: 50px;
+}
+
+.text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+
+.conteudo {
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    color: aliceblue;
+    margin: 15px;
+}

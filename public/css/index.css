@@ -1,8 +1,8 @@
-input{
+input {
     height: 30px;
 }
 
-table{
+table {
     width: 99%;
 }
 
@@ -11,6 +11,14 @@ thead {
     align-items: center;
 }
 
-tbody tr{
+tbody tr {
     text-align: center;
+}
+
+#sugestaoDiv {
+    background: #fff;
+    position: absolute;
+    color: black;
+    width: 166px;
+
 }

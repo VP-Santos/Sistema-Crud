@@ -16,10 +16,7 @@
     <div class="navbar">
         @yield('navbar')
     </div>
-        <div class="centro">
-
-    
-        <!-- <hr style="margin: -2px;"> -->
+    <div class="centro">
         <div style="margin: 20px;">
             @csrf
             @yield('content')

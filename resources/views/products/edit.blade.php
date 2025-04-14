@@ -17,19 +17,19 @@
         @csrf
         @method('PUT')
         <div class="conteudo">
-            <label for="">Novo nome do produto</label>
+            <label for="input">Novo nome do produto</label>
             <input class="text" type="text" name='name' value="{{ $produto['name'] }}">
         </div>
         <div class="conteudo">
-            <label for="">Novo numero em estoque</label>
+            <label for="input">Novo numero em estoque</label>
             <input class="text" type="text" name='stock' value="{{ $produto['stock'] }}">
         </div>
         <div class="conteudo">
-            <label for="">Novo Preço</label>
+            <label for="input">Novo Preço</label>
             <input class="text" type="text" name='price' value="{{ $produto['price'] }}">
         </div>
         <div class="conteudo">
-            <label for="">Nova Descrição</label>
+            <label for="textarea">Nova Descrição</label>
             <textarea class="text" type="text" name='description'>{{$produto['description']}}</textarea>
         </div>
         <div>

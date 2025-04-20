@@ -18,6 +18,11 @@
     </div>
     <div class="centro">
         <div style="margin: 20px;">
+            @if (session('mensagem'))
+            <div class="alert alert-success">
+                {{ session('mensagem') }}
+            </div>
+            @endif
             @csrf
             @yield('content')
         </div>

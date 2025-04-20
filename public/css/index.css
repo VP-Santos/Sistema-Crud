@@ -15,10 +15,15 @@ tbody tr {
     text-align: center;
 }
 
-#sugestaoDiv {
+.sugestao {
     background: #fff;
     position: absolute;
     color: black;
     width: 166px;
-
 }
+
+.indicar:hover {
+    background-color: #cecece;
+    cursor: pointer;
+}
+

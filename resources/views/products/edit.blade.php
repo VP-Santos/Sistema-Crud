@@ -13,24 +13,37 @@
 @section('content')
 <div>
 
+    <!-- corpo do formulario -->
     <form action="{{ route('update', $produto['id'] ) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="conteudo">
             <label for="input">Novo nome do produto</label>
-            <input class="text" type="text" name='name' value="{{ $produto['name'] }}">
+            <input class="text" type="text" name='name' value="{{ old('name', $produto->name) }}">
+            @error('name')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="conteudo">
             <label for="input">Novo numero em estoque</label>
-            <input class="text" type="text" name='stock' value="{{ $produto['stock'] }}">
+            <input class="text" type="text" name='stock' value="{{ old('stock', $produto->stock) }}">
+            @error('stock')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="conteudo">
             <label for="input">Novo Preço</label>
-            <input class="text" type="text" name='price' value="{{ $produto['price'] }}">
+            <input class="text" type="text" name='price' value="{{ old('price', $produto->price) }}">
+            @error('price')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div class="conteudo">
             <label for="textarea">Nova Descrição</label>
-            <textarea class="text" type="text" name='description'>{{$produto['description']}}</textarea>
+            <textarea class="text" type="text" name='description'>{{ old('description', $produto->description) }}</textarea>
+            @error('description')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
         <div>
             <button>Salvar</button>

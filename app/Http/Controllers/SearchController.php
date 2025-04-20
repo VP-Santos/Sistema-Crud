@@ -9,8 +9,9 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {   
-        
-        $pequisadb = Products::where('name', 'LIKE', '%' . $request->q . '%')->get();
+        $produto = $request->get('query');
+        // $produto = $request->p;
+        $pequisadb = Products::where('name', 'LIKE', '%' .$produto . '%')->get();
         return response()->json($pequisadb);
     }
 }

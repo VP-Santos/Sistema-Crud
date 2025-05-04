@@ -1,0 +1,101 @@
+#tabela-container {
+    margin-top: 18px;
+    margin-left: 82px;
+    max-height: calc(100vh - 180px);
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid #000;
+}
+
+#ProductsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#ProductsTable th,
+#productsTable td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+#thead {
+    position: sticky;
+    top: 0;
+    background-color: #797979;
+    color: #e3e9f7;
+}
+
+#thead th {
+    justify-content: center;
+    text-align: center;
+}
+
+#tbody td {
+    text-align: center;
+}
+
+#create-btn {
+    margin-right: 25px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #bbbbbb;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+#create-btn:hover {
+    background-color: #d7d7d7;
+}
+
+#edit-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #a0a0a0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+#edit-btn:hover {
+    background-color: #d7d7d7;
+}
+
+#delete-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff0000f8;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+#delete-btn:hover {
+    background-color: #db0000;
+}
+
+#pesquisarInput {
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: #bbbbbb;
+    color: #000;
+}
+
+#pesquisarButton{
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: #bbbbbb;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+#pesquisarButton:hover {
+    background-color: #d7d7d7;
+}

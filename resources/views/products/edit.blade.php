@@ -1,20 +1,20 @@
 @extends('layout.layout')
 
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/formulario.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('css/formulario.css') }}"> -->
 @endpush
 
 @section('navbar')
 <h2>Editar Produtos</h2>
 
-<a class="btn" style="text-decoration: none;" href="{{ route('index') }}">Voltar</a>
+<a class="btn" style="text-decoration: none;" href="{{ route('index-products') }}">Voltar</a>
 @endsection
 
 @section('content')
 <div>
 
     <!-- corpo do formulario -->
-    <form action="{{ route('update', $produto['id'] ) }}" method="POST">
+    <form action="{{ route('update-products', $produto['id'] ) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="conteudo">

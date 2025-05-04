@@ -1,69 +1,66 @@
 @extends('layout.layout')
 
-@push('css')
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid;
-    }
-</style>
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
-@endpush
-
-@push('jquery')
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-@endpush
+<link rel="stylesheet" href="{{ asset('css/products/index.css') }}">
 
 @section('navbar')
 <h2>Todos os produtos</h2>
-
 <Form>
     <label for="input"></label>
     <input id="pesquisarInput" name="query" type="text" placeholder="Digite o produto" autocomplete="off">
-    <button id="pesquisarButton" type="button">Pesquisar</button>
+    <button id="pesquisarButton" type="button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Pesquisar</span>
+    </button>
     <div id="sugestaoDiv" class="sugestao"></div>
 </Form>
 
-
-<a class="btn" href="{{ route('create') }}">Criar</a>
-
+<a id="create-btn" href="{{ route('create-products') }}">
+    <i class="fa-solid fa-plus"></i>
+    <span>Criar</span>
+</a>
 @endsection
 
 @section('content')
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Estoque</th>
-            <th>Valor</th>
-            <th>Descrição</th>
-            <th>Atualizar</th>
-            <th>Excluir</th>
-        </tr>
-    </thead>
-    <tbody id="tbody">
-        @foreach($produtos as $p)
-        <tr>
-            <td>{{$p['name']}}</td>
-            <td>Quantidade: {{$p['stock']}}</td>
-            <td>R$:{{$p['price']}}</td>
-            <td>{{$p['description']}}</td>
-
-            <td>
-                <a href="{{ route('edit', $p['id']) }}" class="btn">Editar</a>
-            </td>
-            <td>
-                <form action="{{ route('delete', $p['id']) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Excluir</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div id="tabela-container">
+    <table id="ProductsTable">
+        <thead id="thead">
+            <tr>
+                <th>Nome</th>
+                <th>Estoque</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Atualizar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach($produtos as $p)
+            <tr>
+                <td>{{$p['name']}}</td>
+                <td>Quantidade: {{$p['stock']}}</td>
+                <td>R$:{{$p['price']}}</td>
+                <td>{{$p['description']}}</td>
+                <td>
+                    <a id="edit-btn" href="{{ route('edit-products', $p['id']) }}" >
+                        <i class="fa-solid fa-pen"></i>
+                        <span>Editar</span>
+                    </a>
+                </td>
+                <td>
+                    <form action="{{ route('delete-products', $p['id']) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button id="delete-btn" type="submit">
+                            <i class="fa-solid fa-trash"></i>
+                            <span>Excluir</span>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection
 
 @push('script')
@@ -98,7 +95,7 @@
             }
 
             $.ajax({
-                url: "{{ route('search') }}",
+                url: "{{ route('search-products') }}",
                 type: "GET",
                 data: {
                     query: pesquisa
@@ -129,10 +126,9 @@
         $("#pesquisarButton").on('click', function(e) {
             e.preventDefault();
             let pesquisa = $("#pesquisarInput").val();
-            // window.location.href = "{{ route('search') }}?q=" + pesquisa;
 
             $.ajax({
-                url: "{{ route('search') }}",
+                url: "{{ route('search-products') }}",
                 type: "GET",
                 data: {
                     query: pesquisa

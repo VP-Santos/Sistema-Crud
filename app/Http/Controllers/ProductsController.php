@@ -9,9 +9,10 @@ class ProductsController extends Controller
 {
     public function index()
     {
+        //$produtos = Products::all();
         $produtos = Products::all();
 
-        return view('index', ['produtos' => $produtos]);
+        return view('products.index', ['produtos' => $produtos]);
     }
 
     public function create()
@@ -24,7 +25,6 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         try {
-
             //mensagem de validação
             $messages = [
                 'name.required' => 'O campo nome deve ser preenchido.',
@@ -41,7 +41,6 @@ class ProductsController extends Controller
                 'description' => 'required|string',
             ], $messages);
 
-            // dd($request->all());
             Products::create([
                 'name' => $request->name,
                 'stock' => $request->stock,
@@ -49,12 +48,12 @@ class ProductsController extends Controller
                 'description' => $request->description
             ]);
 
-            session()->flash('success', 'Produto criado com sucesso');
+            session()->flash('mensagem', 'Produto criado com sucesso');
             return redirect()->route('index');
 
         } catch (\Exception $e) {
 
-            session()->flash('error', 'Ocorreu um erro ao tentar criar o produto');
+            session()->flash('mensagem', 'Ocorreu um erro ao tentar criar o produto');
             return redirect()->route('index');
         }
     }
@@ -93,10 +92,10 @@ class ProductsController extends Controller
             'price' => $request->price,
             'description' => $request->description,
         ]);
-        return redirect()->route('index')->with('success', 'Produto atualizado com sucesso!');
+        return redirect()->route('index')->with('mensagem', 'Produto atualizado com sucesso!');
 
     }catch(\Exception $e){
-        return redirect()->route('index')->with('error', 'Não foi possível atualizar o produto');
+        return redirect()->route('index')->with('mensagem', 'Não foi possível atualizar o produto');
         
     }
     }
@@ -106,10 +105,10 @@ class ProductsController extends Controller
         try{
             $produto = Products::findOrFail($id);
             $produto->delete();
-            return redirect()->route('index')->with('success', 'produto excluido');
+            return redirect()->route('index')->with('mensagem', 'produto excluido');
             
         }catch(\Exception $e){
-            return redirect()->route('index')->with('error', 'Não foi possível excluir o produto');
+            return redirect()->route('index')->with('mensagem', 'Não foi possível excluir o produto');
             
         }
     }
